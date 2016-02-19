@@ -74,7 +74,8 @@
 ```
 
 运行出来之后,效果是这样的:
-  ![效果图](https://static.oschina.net/uploads/img/201602/19154036_Lu1a.png "在这里输入图片标题")
+
+![效果图](https://static.oschina.net/uploads/img/201602/19154036_Lu1a.png "在这里输入图片标题")
  
 通过这个实例,可以看出,在上面的程序中，UITabBarController有4个子控制器,所以UITabBar中有4个UITabBarButton，UITabBar的结构⼤大致如下图所示：
 
@@ -105,11 +106,14 @@
 ![UITabBarButton的显示的是tabBarItem属性内容](https://static.oschina.net/uploads/img/201602/19160807_IOh9.png "在这里输入图片标题")
 
 
-### 2. 如何自定义UITabBarButton 
+### 2. 如何自定义UITabBarButton  
+#### 2.1. 如何查看UITabBarButton
 
 首先我们需要明确的是UITabBarButton是私有属性private的,  怎样验证它是私有属性呢?   大家可以测试一下, 当我们在代码中想输入
 UITabBarButton的时候,是没有提示的,而且到苹果官方提供的框架中,和帮助文档中, 都是找不到UITabBarButton的, 
+
 ![代码输入结果](https://static.oschina.net/uploads/img/201602/19161643_AdYG.png "在这里输入图片标题")
+
 ![帮助文档查询结果](https://static.oschina.net/uploads/img/201602/19161658_ArUg.png "在这里输入图片标题")
 
 那么问题来了?  我们如何能看见UITabBarButton呢?  或者说UITabBarButton是不是不存在呢? 
@@ -143,6 +147,7 @@ UITabBarButton的时候,是没有提示的,而且到苹果官方提供的框架�
 
 ### 4 效果演示:
 我们先来看看,新浪微博的tabBar工具条的效果图:
+
 新浪微博首页效果
 ![新浪微博首页效果](https://static.oschina.net/uploads/img/201602/19164200_k8hF.png "在这里输入图片标题")
 
