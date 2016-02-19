@@ -107,7 +107,7 @@
 
 
 ### 2. 如何自定义UITabBarButton  
-#### 2.1. 如何查看UITabBarButton
+#### 那么首先. 如何查看UITabBarButton,也就是如何找到UITabBarButton?
 
 首先我们需要明确的是UITabBarButton是私有属性private的,  怎样验证它是私有属性呢?   大家可以测试一下, 当我们在代码中想输入
 UITabBarButton的时候,是没有提示的,而且到苹果官方提供的框架中,和帮助文档中, 都是找不到UITabBarButton的, 
