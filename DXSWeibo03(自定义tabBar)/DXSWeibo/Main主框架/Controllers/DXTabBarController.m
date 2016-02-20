@@ -13,37 +13,21 @@
 
 
 @interface DXTabBarController ()
-
-
-
 @end
 
 @implementation DXTabBarController
 
-
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // 创建4个子控制器
     [self setupChildViewController];
     
     // 自定义tabBar
-    /**
-     *  分析: tabBar底层是只读的readonly权限,那我们要自定义tabBar,如何来修改这个权限呢?
-     *
-     *  @return 可以用KVC的方法
-     */
-    // 1. 先创建一个自定义tabBar
     DXTabBar *tabBar = [[DXTabBar alloc] initWithFrame:self.tabBar.frame];
-    
-    NSLog(@"%@", self.tabBar);
-
-    
-    // 2. 利用KVC把readonly权限改过来
+    // 利用KVC把readonly权限改过来
     [self setValue:tabBar forKeyPath:@"tabBar"];
-    NSLog(@"%@", self.tabBar);
     
 }
 // 系统在即将开始为view准备控件的时候调用这个方法
@@ -51,30 +35,13 @@
     [super viewWillAppear:animated];
     NSLog(@"%@", self.tabBar.subviews);
 }
-//// 系统为view控件准备接受之后调用这个方法
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//    // 打印查看tabBar的所有子控件
-//     NSLog(@"----%@", self.tabBar.subviews);
-//}
 
 #pragma mark - 统一设置tabBarItem的外观标识
-// 当第一次使用这个类,或子类的时候调用,用于来初始化类
-// 用这个方法,来设置全局的tabBarItem的外观
 + (void)initialize {
-    
     // 获取所有的tabBarItem外观标识
-    //    UITabBarItem *item = [UITabBarItem appearance];
-    /**
-     *  但是这里如果用appearance来设置,是不严谨的,因为,所有的UIView控件都是有这个属性的,所以,应该用自己的,如下: appearanceWhenContainedIn:这个方法里面的self 表示的就是当前类DXTabBarController;
-     */
     UITabBarItem *item = [UITabBarItem appearanceWhenContainedIn:self, nil];
-    
     NSMutableDictionary *att = [NSMutableDictionary dictionary];
-    //    att[NSFontAttributeName] = [UIFont systemFontOfSize:18];   下面的写法更加好看,也看起来舒服
     att[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    
     [item setTitleTextAttributes:att forState:UIControlStateSelected];
     
 }
@@ -83,7 +50,7 @@
 // 封装创建TabBarController的4个子控制器的方法
 - (void)setupChildViewController {
     
-    // 添加四个TabBarController的子控制器UINavigationController
+    // 添加四个TabBarController的子控制器
     // 首页Home
     UINavigationController *navHome = [self navigationControllerWithStoryboardName:@"DXHome"];
     [self setupOneChildViewController:navHome image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalName:@"tabbar_home_selected"] title:@"首页"];
@@ -134,14 +101,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
